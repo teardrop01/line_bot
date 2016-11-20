@@ -127,7 +127,8 @@ function DoActionAll($message_text){
     // $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("test");
     // $response = $bot->replyMessage($event->replyToken, $textMessageBuilder);
     $response = $bot->leaveGroup("$gameRoomId");
-    var_dump($response);
+    //var_dump($response);
+    error_log($response->getRawBody());
     //echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
 
   } else if ("@del" == $message_text) {// デバッグ用
