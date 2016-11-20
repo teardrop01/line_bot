@@ -126,10 +126,11 @@ function DoActionAll($message_text){
   } else if ("@leave" == $message_text) {// デバッグ用
     if ("group" == $event->source->type) {
       $gameRoomId = $event->source->groupId;
+      $response = $bot->leaveGroup($gameRoomId);
     } else if ("room" == $event->source->type) {
       $gameRoomId = $event->source->roomId;
+      $response = $bot->leaveRoom($gameRoomId);
     }
-    $response = $bot->leaveGroup($gameRoomId);
   } else if ("@del" == $message_text) {// デバッグ用
     $result = mysqli_query($link, "select game_room_num from game_room where game_room_id = '$gameRoomId'");
     $row = mysqli_fetch_row($result);
