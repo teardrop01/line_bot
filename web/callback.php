@@ -126,7 +126,7 @@ function DoActionAll($message_text){
   } else if ("@leave" == $message_text) {// デバッグ用
     // $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("test");
     // $response = $bot->replyMessage($event->replyToken, $textMessageBuilder);
-    $response = $bot->leaveGroup($httpClient);
+    $response = $bot->leaveGroup($gameRoomId);
     //var_dump($response);
     //error_log($response->getRawBody());
     //echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
