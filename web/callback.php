@@ -125,7 +125,7 @@ function DoActionAll($message_text){
   //
   } else if ("@leave" == $message_text) {// デバッグ用
     $response = $bot->leaveGroup("$gameRoomId");
-    echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
+    //echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
 
   } else if ("@del" == $message_text) {// デバッグ用
     $result = mysqli_query($link, "select game_room_num from game_room where game_room_id = '$gameRoomId'");
