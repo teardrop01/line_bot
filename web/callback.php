@@ -124,7 +124,7 @@ function DoActionAll($message_text){
   //   $response = $bot->replyMessage($event->replyToken, $message);
   //
   } else if ("@leave" == $message_text) {// デバッグ用
-    $response = $bot->leaveRoom($gameRoomId);
+    $response = $bot->leaveGroup($event->source->groupId);
     echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
 
   } else if ("@del" == $message_text) {// デバッグ用
