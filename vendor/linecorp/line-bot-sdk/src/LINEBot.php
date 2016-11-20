@@ -134,7 +134,8 @@ class LINEBot
      */
     public function leaveGroup($groupId)
     {
-        return $this->httpClient->post($this->endpointBase . '/v2/bot/group/' . urlencode($groupId) . '/leave', []);
+        //return $this->httpClient->post($this->endpointBase . '/v2/bot/group/' . urlencode($groupId) . '/leave', []);
+        return $this->httpClient->post($this->endpointBase . '/v2/bot/group/' . urlencode($groupId) . '/leave', ["dummy"=>"dummy"]);
     }
 
     /**
@@ -145,7 +146,8 @@ class LINEBot
      */
     public function leaveRoom($roomId)
     {
-        return $this->httpClient->post($this->endpointBase . '/v2/bot/room/' . urlencode($roomId) . '/leave', []);
+        //return $this->httpClient->post($this->endpointBase . '/v2/bot/room/' . urlencode($roomId) . '/leave', []);
+        return $this->httpClient->post($this->endpointBase . '/v2/bot/room/' . urlencode($roomId) . '/leave', ["dummy"=>"dummy"]);
     }
 
     /**
