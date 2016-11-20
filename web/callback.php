@@ -9,6 +9,10 @@
 // ・roles
 // role_id(Int) role_name(String)
 
+//imagemap用
+use LINE\LINEBot\ImagemapActionBuilder\AreaBuilder;
+use LINE\LINEBot\ImagemapActionBuilder\ImagemapMessageActionBuilder;
+use LINE\LINEBot\ImagemapActionBuilder\ImagemapUriActionBuilder;
 
 
 require('../vendor/autoload.php');
@@ -119,6 +123,10 @@ function DoActionAll($message_text){
   //   $message = CreateUranaiButton($event->source->userId);
   //   $response = $bot->replyMessage($event->replyToken, $message);
   //
+  } else if ("@leave" == $message_text) {// デバッグ用
+    $response = $bot->leaveRoom($gameRoomId);
+    echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
+
   } else if ("@del" == $message_text) {// デバッグ用
     $result = mysqli_query($link, "select game_room_num from game_room where game_room_id = '$gameRoomId'");
     $row = mysqli_fetch_row($result);
