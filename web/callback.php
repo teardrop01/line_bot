@@ -124,13 +124,12 @@ function DoActionAll($message_text){
   //   $response = $bot->replyMessage($event->replyToken, $message);
   //
   } else if ("@leave" == $message_text) {// デバッグ用
-    // $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("test");
-    // $response = $bot->replyMessage($event->replyToken, $textMessageBuilder);
+    if ("group" == $event->source->type) {
+      $gameRoomId = $event->source->groupId;
+    } else if ("room" == $event->source->type) {
+      $gameRoomId = $event->source->roomId;
+    }
     $response = $bot->leaveGroup($gameRoomId);
-    //var_dump($response);
-    //error_log($response->getRawBody());
-    //echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
-
   } else if ("@del" == $message_text) {// デバッグ用
     $result = mysqli_query($link, "select game_room_num from game_room where game_room_id = '$gameRoomId'");
     $row = mysqli_fetch_row($result);
@@ -550,9 +549,6 @@ function DoActionLeave(){
       $result = mysqli_query($link,"delete from game_room where game_room_num = '$game_room_num'");
       $result = mysqli_query($link,"delete from user where game_room_num = '$game_room_num'");
       $result = mysqli_query($link,"delete from user_temp where game_room_num = '$game_room_num'");
-
-      $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("bye！");
-      $response = $bot->replyMessage($event->replyToken, $textMessageBuilder);
 }
 function Cast(){
   global $link, $gameRoomId;
