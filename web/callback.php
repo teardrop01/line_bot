@@ -123,7 +123,7 @@ function DoActionAll($message_text){
   //   $message = CreateUranaiButton($event->source->userId);
   //   $response = $bot->replyMessage($event->replyToken, $message);
   //
-  } else if ("@leave" == $message_text) {// デバッグ用
+  } else if ("@leave" == $message_text) {
     if ("group" == $event->source->type) {
       $gameRoomId = $event->source->groupId;
       $response = $bot->leaveGroup($gameRoomId);
