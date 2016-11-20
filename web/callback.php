@@ -550,6 +550,9 @@ function DoActionLeave(){
       $result = mysqli_query($link,"delete from game_room where game_room_num = '$game_room_num'");
       $result = mysqli_query($link,"delete from user where game_room_num = '$game_room_num'");
       $result = mysqli_query($link,"delete from user_temp where game_room_num = '$game_room_num'");
+
+      $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("bye！");
+      $response = $bot->replyMessage($event->replyToken, $textMessageBuilder);
 }
 function Cast(){
   global $link, $gameRoomId;
